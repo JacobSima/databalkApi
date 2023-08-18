@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A10BED83-D274-4543-808A-3DAA02AEAAB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databalk.Api", "src\Databalk.Api\Databalk.Api.csproj", "{84F12F20-7DA9-4DBB-9A41-6FBA6582FB71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databalk.Application", "src\Databalk.Application\Databalk.Application.csproj", "{4798EA51-C861-475B-9FDC-389639F6465E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databalk.Core", "src\Databalk.Core\Databalk.Core.csproj", "{0D937B1C-CC71-4B56-BE3E-64225FCFA2C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databalk.Infrastructure", "src\Databalk.Infrastructure\Databalk.Infrastructure.csproj", "{45A5B8A8-E6FD-447E-A1E2-1E3261A54123}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84F12F20-7DA9-4DBB-9A41-6FBA6582FB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F12F20-7DA9-4DBB-9A41-6FBA6582FB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F12F20-7DA9-4DBB-9A41-6FBA6582FB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F12F20-7DA9-4DBB-9A41-6FBA6582FB71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4798EA51-C861-475B-9FDC-389639F6465E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4798EA51-C861-475B-9FDC-389639F6465E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4798EA51-C861-475B-9FDC-389639F6465E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4798EA51-C861-475B-9FDC-389639F6465E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D937B1C-CC71-4B56-BE3E-64225FCFA2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D937B1C-CC71-4B56-BE3E-64225FCFA2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D937B1C-CC71-4B56-BE3E-64225FCFA2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D937B1C-CC71-4B56-BE3E-64225FCFA2C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45A5B8A8-E6FD-447E-A1E2-1E3261A54123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45A5B8A8-E6FD-447E-A1E2-1E3261A54123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45A5B8A8-E6FD-447E-A1E2-1E3261A54123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45A5B8A8-E6FD-447E-A1E2-1E3261A54123}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{84F12F20-7DA9-4DBB-9A41-6FBA6582FB71} = {A10BED83-D274-4543-808A-3DAA02AEAAB7}
+		{4798EA51-C861-475B-9FDC-389639F6465E} = {A10BED83-D274-4543-808A-3DAA02AEAAB7}
+		{0D937B1C-CC71-4B56-BE3E-64225FCFA2C1} = {A10BED83-D274-4543-808A-3DAA02AEAAB7}
+		{45A5B8A8-E6FD-447E-A1E2-1E3261A54123} = {A10BED83-D274-4543-808A-3DAA02AEAAB7}
+	EndGlobalSection
+EndGlobal

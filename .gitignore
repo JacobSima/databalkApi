@@ -1,0 +1,14 @@
+.vscode*
+.vs 
+
+src/Databalk.Api/bin*
+src/Databalk.Api/obj*
+
+src/Databalk.Application/bin*
+src/Databalk.Application/obj*
+
+src/Databalk.Core/bin*
+src/Databalk.Core/obj*
+
+src/Databalk.Infrastructure/bin*
+src/Databalk.Infrastructure/obj*
