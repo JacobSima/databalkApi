@@ -14,21 +14,27 @@ namespace Databalk.Api.Controllers;
 public class UserController : ControllerBase
 {
   private readonly ICommandHandler<SignUp> _signUpHandler;
+  private readonly ICommandHandler<SignIn> _signInHandler;
   private readonly IQueryHandler<GetUser, UserDto> _getUserHandler;
   private readonly IQueryHandler<GetUsers, IEnumerable<UserDto>> _getUsersHandlers;
   private readonly IAuthenticator  _authenticator;
+  private readonly ITokenStorage _tokenStorage;
 
   public UserController(
     ICommandHandler<SignUp> signUpHandler,
     IQueryHandler<GetUser, UserDto> getUserHandler,
     IQueryHandler<GetUsers, IEnumerable<UserDto>> getUsersHandlers,
-    IAuthenticator  authenticator
+    IAuthenticator  authenticator,
+    ICommandHandler<SignIn> signInHandler,
+    ITokenStorage tokenStorage
   )
   {
     _signUpHandler = signUpHandler;
     _getUserHandler =  getUserHandler;
     _getUsersHandlers = getUsersHandlers;
     _authenticator = authenticator;
+    _signInHandler = signInHandler;
+    _tokenStorage = tokenStorage;
   }
 
   [HttpGet]
@@ -50,6 +56,14 @@ public class UserController : ControllerBase
     command = command with {UserId = Guid.NewGuid()};
     await _signUpHandler.HandleAsync(command);
     return CreatedAtAction(nameof(Get), new {command.UserId}, null);
+  }
+
+   [HttpPost("sing-in")]
+  public async Task<ActionResult<JwtDto>> Post(SignIn command)
+  {
+    await _signInHandler.HandleAsync(command);
+    var jwt = _tokenStorage.Get();
+    return Ok(jwt);
   }
 
 
