@@ -1,4 +1,6 @@
+using Databalk.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Databalk.Api.Controllers;
 
@@ -6,11 +8,12 @@ namespace Databalk.Api.Controllers;
 [Route("")]
 public class HomeController : ControllerBase
 {
-  public HomeController()
+  private readonly AppOptions _appOptions;
+  public HomeController(IOptionsMonitor<AppOptions> appOptions)
   {
-
+    _appOptions = appOptions.CurrentValue;
   }
 
   [HttpGet]
-  public ActionResult Get() => Ok("Welcome to Databalk API");
+  public ActionResult Get() => Ok($"{_appOptions.Name}, {_appOptions.Description}");
 }

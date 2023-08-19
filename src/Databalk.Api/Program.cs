@@ -1,5 +1,7 @@
 using Databalk.Core;
 using Databalk.Application;
+using Databalk.Infrastructure;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
   .AddCore()
-  .AddApplication();
+  .AddApplication()
+  .AddInfrastructure(builder.Configuration)
+  .AddControllers();
 
   
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
