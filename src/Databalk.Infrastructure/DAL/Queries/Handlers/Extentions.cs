@@ -8,10 +8,18 @@ internal static class Extentions
 {
   public static DataTaskDto AsDto(this DataTask dataTask) 
     => new() 
-    {
-      Id = dataTask.Id,
-      Title = dataTask.Title,
-      Description = dataTask.Description,
-      DueDate = dataTask.DueDate
-    };
+  {
+    Id = dataTask.Id,
+    Title = dataTask.Title,
+    Description = dataTask.Description,
+    DueDate = dataTask.DueDate
+  };
+
+  public static UserDto AsDto(this User user)
+   => new()
+   {
+    Id = user.Id,
+    Email = user.Email,
+    Username = user.Username
+   };
 }

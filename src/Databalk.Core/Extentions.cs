@@ -8,6 +8,8 @@ public static class Extentions
    public static IServiceCollection AddCore(this IServiceCollection services)
    {
       services.AddSingleton<IDataTaskFactory, DataTaskFactory>();
+      services.AddSingleton<IUserFactory, UserFactory>();
+      
       return services;
    } 
 }

@@ -9,12 +9,9 @@ namespace Databalk.Application.CommandHandlers.Handlers;
 public class UpdateDataTaskHandler : ICommandHandler<UpdateDataTask>
 {
   private readonly IDataTaskRepository _repository;
-  private readonly IDataTaskFactory _factory;
-  public UpdateDataTaskHandler(IDataTaskRepository repository, IDataTaskFactory factory)
+  public UpdateDataTaskHandler(IDataTaskRepository repository)
   {
     _repository = repository;
-    _factory = factory;
-    
   }
 
   public async Task HandleAsync(UpdateDataTask command)

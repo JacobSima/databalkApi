@@ -2,7 +2,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Databalk.Application.Abstractions;
 using Databalk.Infrastructure.DAL;
 using Microsoft.Extensions.Configuration;
-
+using Databalk.Infrastructure.Security;
+using Databalk.Infrastructure.Middleware;
 
 namespace Databalk.Infrastructure;
 
@@ -14,8 +15,11 @@ public static class Extentions
   {
 
     services.Configure<AppOptions>(configuration.GetRequiredSection(OptionSectionName));
+    services.AddSingleton<ExceptionMiddleware>();
 
     services.AddDAL(configuration);
+
+    services.AddSecurity();
 
     var infrastructureAssembly = typeof(AppOptions).Assembly;
     services.Scan(s => s.FromAssemblies(infrastructureAssembly)

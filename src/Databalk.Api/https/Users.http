@@ -1,0 +1,21 @@
+@url = http://localhost:5000
+
+@base = users
+
+@userId = 1233b305-6425-4aa2-a0e5-b8d46d1d4253
+
+### Query
+GET {{url}}/{{base}}
+
+### Query 
+GET {{url}}/{{base}}/{{userId}}
+
+### Command
+POST {{url}}/{{base}}/sign-up
+Content-Type: application/json
+
+{
+  "email": "userokj4@myspot.io",
+  "username": "user4",
+  "password": "secret"
+}
