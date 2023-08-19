@@ -17,7 +17,8 @@ internal static class Extentions
 
     services
       .Configure<AuthOptions>(configuration.GetRequiredSection(OptionsSectionName))
-      .AddSingleton<IAuthenticator, Authenticator>();
+      .AddSingleton<IAuthenticator, Authenticator>()
+      .AddSingleton<ITokenStorage, TokenStorage>();
     
     services
     .AddAuthentication(o =>

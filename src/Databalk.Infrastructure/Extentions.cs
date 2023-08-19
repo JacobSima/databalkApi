@@ -19,6 +19,7 @@ public static class Extentions
     services.Configure<AppOptions>(configuration.GetRequiredSection(OptionSectionName));
     services.AddSingleton<ExceptionMiddleware>();
     services.AddSingleton<IClock, Clock>();
+    services.AddHttpContextAccessor();
 
     services.AddDAL(configuration);
 

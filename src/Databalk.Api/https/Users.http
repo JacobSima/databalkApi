@@ -21,10 +21,24 @@ Content-Type: application/json
 }
 
 
+### Command
+# @name sing_in
+POST {{url}}/{{base}}/sing-in
+Content-Type: application/json
+
+{
+  "email": "userokj4@myspot.io",
+  "password": "secret"
+}
+
+###
+@accessToken = {{sing_in.response.body.$.accessToken}}
+
+
 
 ### Query
 GET {{url}}/{{base}}/jwt
 
 ### Query
 GET {{url}}/{{base}}/secret
-Authorization: Bearer {{}}
+Authorization: Bearer {{accessToken}}

@@ -12,16 +12,19 @@ public class SignInHandler : ICommandHandler<SignIn>
   private readonly IUserRepositoty _userRepositoty;
   private readonly IPasswordManager _passwordManager;
   private readonly IAuthenticator _authenticator;
+  private readonly ITokenStorage _tokenStorage;
 
   public SignInHandler(
     IUserRepositoty userRepositoty,
     IPasswordManager passwordManager,
-    IAuthenticator authenticator
+    IAuthenticator authenticator,
+    ITokenStorage tokenStorage
     )
   {
     _userRepositoty = userRepositoty;
     _passwordManager = passwordManager;
     _authenticator = authenticator;
+    _tokenStorage = tokenStorage;
   }
 
   public async Task HandleAsync(SignIn command)
@@ -33,6 +36,6 @@ public class SignInHandler : ICommandHandler<SignIn>
     }
 
     var jwt = _authenticator.CreateToken(user.Id);
-    // _tokenStorage.Set(jwt);
+    _tokenStorage.Set(jwt);
   }
 }
