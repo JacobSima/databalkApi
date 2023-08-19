@@ -19,3 +19,12 @@ Content-Type: application/json
   "username": "user4",
   "password": "secret"
 }
+
+
+
+### Query
+GET {{url}}/{{base}}/jwt
+
+### Query
+GET {{url}}/{{base}}/secret
+Authorization: Bearer {{}}

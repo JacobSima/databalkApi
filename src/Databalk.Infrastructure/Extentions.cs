@@ -4,6 +4,8 @@ using Databalk.Infrastructure.DAL;
 using Microsoft.Extensions.Configuration;
 using Databalk.Infrastructure.Security;
 using Databalk.Infrastructure.Middleware;
+using Databalk.Infrastructure.Auth;
+using Databalk.Core.Abstractions;
 
 namespace Databalk.Infrastructure;
 
@@ -16,10 +18,13 @@ public static class Extentions
 
     services.Configure<AppOptions>(configuration.GetRequiredSection(OptionSectionName));
     services.AddSingleton<ExceptionMiddleware>();
+    services.AddSingleton<IClock, Clock>();
 
     services.AddDAL(configuration);
 
     services.AddSecurity();
+
+    services.AddAuth(configuration);
 
     var infrastructureAssembly = typeof(AppOptions).Assembly;
     services.Scan(s => s.FromAssemblies(infrastructureAssembly)

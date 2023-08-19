@@ -3,6 +3,8 @@ using Databalk.Application.Abstractions;
 using Databalk.Application.CommandHandlers.Commands;
 using Databalk.Application.DTO;
 using Databalk.Application.Queries;
+using Databalk.Application.Security;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Databalk.Api.Controllers;
@@ -12,18 +14,21 @@ namespace Databalk.Api.Controllers;
 public class UserController : ControllerBase
 {
   private readonly ICommandHandler<SignUp> _signUpHandler;
-  private IQueryHandler<GetUser, UserDto> _getUserHandler;
-  private IQueryHandler<GetUsers, IEnumerable<UserDto>> _getUsersHandlers;
+  private readonly IQueryHandler<GetUser, UserDto> _getUserHandler;
+  private readonly IQueryHandler<GetUsers, IEnumerable<UserDto>> _getUsersHandlers;
+  private readonly IAuthenticator  _authenticator;
 
   public UserController(
     ICommandHandler<SignUp> signUpHandler,
     IQueryHandler<GetUser, UserDto> getUserHandler,
-    IQueryHandler<GetUsers, IEnumerable<UserDto>> getUsersHandlers
+    IQueryHandler<GetUsers, IEnumerable<UserDto>> getUsersHandlers,
+    IAuthenticator  authenticator
   )
   {
     _signUpHandler = signUpHandler;
     _getUserHandler =  getUserHandler;
     _getUsersHandlers = getUsersHandlers;
+    _authenticator = authenticator;
   }
 
   [HttpGet]
@@ -45,5 +50,22 @@ public class UserController : ControllerBase
     command = command with {UserId = Guid.NewGuid()};
     await _signUpHandler.HandleAsync(command);
     return CreatedAtAction(nameof(Get), new {command.UserId}, null);
+  }
+
+
+  // Token Testing(Case testing)
+  [HttpGet(template:"jwt")]
+  public ActionResult<JwtDto> GetJwt()
+  {
+    var token = _authenticator.CreateToken(Guid.NewGuid());
+    return token;
+  }
+
+  [HttpGet("secret")]
+  [Authorize]
+  public ActionResult<string> GetSecret()
+  {
+    var user = HttpContext.User;
+    return "Secret";
   }
 }

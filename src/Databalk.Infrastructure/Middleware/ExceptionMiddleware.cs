@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Databalk.Infrastructure.Middleware;
 
-internal sealed class ExceptionMiddleware : IMiddleware
+public sealed class ExceptionMiddleware : IMiddleware
 {
   private readonly ILogger<ExceptionMiddleware> _logger;
 
