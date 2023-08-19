@@ -1,0 +1,41 @@
+@url = http://localhost:5000
+
+@base = tasks
+
+@taskId = ba7c2a3e-e8b1-4f04-9e63-4b6ef9c28871
+
+
+### Query: get all tasks
+GET {{url}}/{{base}}
+
+
+### Query: get a single task
+GET {{url}}/{{base}}/{{taskId}}
+
+
+### Command: Update a single task
+POST  {{url}}/{{base}}
+Content-Type: application/json
+
+{
+  "id": "ba7c2a3e-e8b1-4f04-9e63-4b6ef9c28871",
+  "title": "Task post-1",
+  "description": "Description for post-1",
+  "dueDate": "2023-08-31T00:00:00"
+}
+
+
+### Command: Update a single task
+PUT {{url}}/{{base}}
+Content-Type: application/json
+
+{
+  "id": "79e077c3-08b4-4e7c-82a3-6b186b4bb9b8",
+  "title": "Task 3 updated again",
+  "description": "Description for Task 3 updated again",
+  "dueDate": "2023-08-30T00:00:00"
+}
+
+
+### Command: Delete Task
+DELETE {{url}}/{{base}}/{{taskId}}

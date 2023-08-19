@@ -22,19 +22,19 @@ internal sealed class DataTaskRepository : IDataTaskRepository
     await _dbContext.SaveChangesAsync();
   }
 
-  public Task DeleteAsync(DataTask DataTask)
+  public async Task DeleteAsync(DataTask DataTask)
   {
     _dataTasks.Remove(DataTask);
-    return Task.CompletedTask;
+    await _dbContext.SaveChangesAsync();
   }
 
   public async Task<DataTask> GetByIdAsync(DataTaskId id) => await _dataTasks.SingleOrDefaultAsync(x => x.Id == id);
 
   public async Task<DataTask> GetByTitleAsync(Title title) => await _dataTasks.SingleOrDefaultAsync(x => x.Title == title);
 
-  public Task UpdateAsync(DataTask DataTask)
+  public async Task UpdateAsync(DataTask DataTask)
   {
     _dataTasks.Update(DataTask);
-    return Task.CompletedTask;
+    await _dbContext.SaveChangesAsync();
   }
 }

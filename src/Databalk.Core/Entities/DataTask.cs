@@ -1,23 +1,29 @@
 using Databalk.Core.ValueObjects;
-using Microsoft.VisualBasic;
 
 namespace Databalk.Core.Entities;
 
 public class DataTask
 {
-  public DataTaskId Id {get;}
+  public DataTaskId Id {get; private set;}
 
-  public Title Title {get;}
+  public Title Title {get; private set;}
 
-  public Description Description {get;}
+  public Description Description {get; private set;}
 
-  public Date DueDate {get;}
+  public Date DueDate {get; private set;}
 
   public DataTask(DataTaskId id, Title title, Description description, Date dueDate)
   {
     Id = id;
     Title = title;
     Description =  description;
+    DueDate = dueDate;
+  }
+
+  public void Update(string title, string description, DateTime dueDate)
+  {
+    Title = title;
+    Description = description;
     DueDate = dueDate;
   }
 }
