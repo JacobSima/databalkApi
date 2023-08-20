@@ -18,8 +18,8 @@ POST {{url}}/{{base}}/sign-up
 Content-Type: application/json
 
 {
-  "email": "userokj5@databalk.io",
-  "username": "user5",
+  "email": "userokj6@databalk.io",
+  "username": "user6",
   "password": "secret"
 }
 
@@ -30,7 +30,7 @@ POST {{url}}/{{base}}/sing-in
 Content-Type: application/json
 
 {
-  "email": "userokj5@databalk.io",
+  "email": "userokj6@databalk.io",
   "password": "secret"
 }
 

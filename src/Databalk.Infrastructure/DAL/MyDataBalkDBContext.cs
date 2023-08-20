@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Databalk.Infrastructure.DAL;
 
-internal sealed class MyDataBalkDBContext : DbContext
+public sealed class MyDataBalkDBContext : DbContext
 {
   public DbSet<DataTask> DataTasks {get; set;}
 

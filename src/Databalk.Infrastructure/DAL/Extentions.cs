@@ -21,6 +21,7 @@ public static class Extentions
 
     services.AddScoped<IDataTaskRepository, DataTaskRepository>();
     services.AddScoped<IDataTaskReadService, DataTaskReadService>();
+    services.AddScoped<IUserReadService, UserReadService>();
     services.AddScoped<IUserRepositoty, UserRepository>();
 
     services.AddHostedService<DatabaseInitializer>();

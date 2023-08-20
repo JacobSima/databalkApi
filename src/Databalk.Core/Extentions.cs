@@ -1,6 +1,8 @@
+using System.Runtime.CompilerServices;
 using Databalk.Core.Factories;
 using Microsoft.Extensions.DependencyInjection;
 
+[assembly: InternalsVisibleTo("Databalk.Tests.Unit")]
 namespace Databalk.Core;
 
 public static class Extentions

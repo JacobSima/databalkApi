@@ -12,3 +12,6 @@ src/Databalk.Core/obj*
 
 src/Databalk.Infrastructure/bin*
 src/Databalk.Infrastructure/obj*
+
+tests/Databalk.Tests.Unit/bin*
+tests/Databalk.Tests.Unit/obj*

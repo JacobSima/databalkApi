@@ -2,38 +2,42 @@ using Databalk.Application.Abstractions;
 using Databalk.Application.CommandHandlers.Commands;
 using Databalk.Application.Exceptions;
 using Databalk.Application.Security;
+using Databalk.Application.Services;
 using Databalk.Core.Factories;
 using Databalk.Core.Repositories;
 
 namespace Databalk.Application.CommandHandlers.Handlers;
 
-internal sealed class SignupHandler : ICommandHandler<SignUp>
+public sealed class SignupHandler : ICommandHandler<SignUp>
 {
   private readonly IPasswordManager _passwordManager;
   private readonly IUserRepositoty _userRepositoty;
   private readonly IUserFactory _userFactory;
+  private readonly IUserReadService _userReadService;
 
   public SignupHandler(
     IPasswordManager passwordManager,
     IUserRepositoty userRepositoty,
-    IUserFactory userFactory
+    IUserFactory userFactory,
+    IUserReadService userReadService
     )
   {
     _passwordManager = passwordManager;
     _userRepositoty = userRepositoty;
     _userFactory = userFactory;
+    _userReadService = userReadService;
   }
 
   public async Task HandleAsync(SignUp command)
   {
     var (userId, email, username, password) = command;
 
-    if (await _userRepositoty.GetByEmailAsync(email) is not null)
+    if (await _userReadService.ExistsByEmailAsync(email))
     {
       throw new EmailAlreadyInUseException(email);
     }
 
-    if (await _userRepositoty.GetByUsernameAsync(username) is not null)
+    if (await _userReadService.ExistsByUsernameAsync(username))
     {
       throw new UsernameAlreadyInUseException(username);
     }

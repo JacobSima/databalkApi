@@ -7,7 +7,9 @@ using Databalk.Infrastructure.Middleware;
 using Databalk.Infrastructure.Auth;
 using Databalk.Core.Abstractions;
 using Microsoft.OpenApi.Models;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Databalk.Tests.Unit")]
 namespace Databalk.Infrastructure;
 
 public static class Extentions
