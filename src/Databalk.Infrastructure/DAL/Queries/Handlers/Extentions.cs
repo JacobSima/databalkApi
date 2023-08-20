@@ -12,7 +12,8 @@ internal static class Extentions
     Id = dataTask.Id,
     Title = dataTask.Title,
     Description = dataTask.Description,
-    DueDate = dataTask.DueDate
+    DueDate = dataTask.DueDate,
+    Assignee = dataTask.Assignee.AsDto()
   };
 
   public static UserDto AsDto(this User user)

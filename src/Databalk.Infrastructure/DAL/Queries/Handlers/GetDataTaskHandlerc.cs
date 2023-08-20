@@ -19,6 +19,7 @@ internal class GetDataTaskHandler : IQueryHandler<GetDataTask, DataTaskDto>
   public async Task<DataTaskDto> HandleAsync(GetDataTask query)
     => await _dataTaks
         .Where(x => x.Id == query.Id)
+        .Include(x => x.Assignee)
         .Select(x => x.AsDto())
         .AsNoTracking()
         .SingleOrDefaultAsync();

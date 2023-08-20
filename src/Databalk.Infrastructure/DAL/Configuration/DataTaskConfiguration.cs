@@ -26,8 +26,12 @@ public class DataTaskConfiguration : IEntityTypeConfiguration<DataTask>
       .IsRequired()
       .HasConversion(x => x.Value, x => new Date(x));
     
-    builder.Property(x => x.Assignee)
+    builder.Property(x => x.AssigneeId)
       .IsRequired()
       .HasConversion(x => x.Value, x => new UserId(x));
+
+    builder.HasOne(x => x.Assignee)
+      .WithMany(x => x.DataTasks)
+      .HasForeignKey(x => x.AssigneeId);
   }
 }

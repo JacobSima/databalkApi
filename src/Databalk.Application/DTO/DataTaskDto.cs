@@ -1,4 +1,6 @@
 
+using Databalk.Core.Entities;
+
 namespace Databalk.Application.DTO;
 
 public class DataTaskDto
@@ -10,5 +12,7 @@ public class DataTaskDto
    public string Description {get; set;}
 
    public DateTime DueDate {get; set;}
+
+   public UserDto Assignee {get; set;}
 
 }

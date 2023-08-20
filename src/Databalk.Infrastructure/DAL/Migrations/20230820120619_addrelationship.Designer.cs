@@ -3,17 +3,20 @@ using System;
 using Databalk.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Databalk.Infrastructure.DAL.Migrations
+namespace Databalk.Infrastructure.dal.migrations
 {
     [DbContext(typeof(MyDataBalkDBContext))]
-    partial class MyDataBalkDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230820120619_addrelationship")]
+    partial class addrelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

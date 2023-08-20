@@ -20,4 +20,6 @@ public class User
    public Username Username {get;}
 
    public Password Password {get;}
+
+   public ICollection<DataTask> DataTasks {get; set;}
 }

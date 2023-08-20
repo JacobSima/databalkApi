@@ -11,7 +11,7 @@
 GET {{url}}/{{base}}
 
 ### Query 
-GET {{url}}/{{base}}/{{userId1}}
+GET {{url}}/{{base}}/{{userId3}}
 
 ### Command
 POST {{url}}/{{base}}/sign-up

@@ -14,17 +14,20 @@ public class CreateDataTaskHandler : ICommandHandler<CreateDataTask>
   private readonly IDataTaskRepository _repository;
   private readonly IDataTaskFactory _factory;
   private readonly IDataTaskReadService _readService;
+  private readonly IUserRepositoty _userRepositoty;
   private readonly IClock _clock;
 
   public CreateDataTaskHandler(
     IDataTaskRepository repository,
     IDataTaskFactory factory,
     IDataTaskReadService readService,
+    IUserRepositoty userRepositoty,
     IClock clock)
   {
     _repository = repository;
     _factory = factory;
     _readService = readService;
+    _userRepositoty = userRepositoty;
     _clock = clock;
   }
 
@@ -36,7 +39,7 @@ public class CreateDataTaskHandler : ICommandHandler<CreateDataTask>
       throw new TitleTaskAlreadyExistException(title);
     }
 
-    if (assignee == Guid.Empty || await _repository.GetByIdAsync(assignee) == null)
+    if (assignee == Guid.Empty || await _userRepositoty.GetByIdAsync(assignee) == null)
     {
       throw new NotAssigneeFoundException(assignee);
     }

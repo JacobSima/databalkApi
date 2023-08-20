@@ -28,9 +28,15 @@ internal sealed class DataTaskRepository : IDataTaskRepository
     await _dbContext.SaveChangesAsync();
   }
 
-  public async Task<DataTask> GetByIdAsync(DataTaskId id) => await _dataTasks.SingleOrDefaultAsync(x => x.Id == id);
+  public async Task<DataTask> GetByIdAsync(DataTaskId id)
+    => await _dataTasks
+        .Include(x => x.Assignee)
+        .SingleOrDefaultAsync(x => x.Id == id);
 
-  public async Task<DataTask> GetByTitleAsync(Title title) => await _dataTasks.SingleOrDefaultAsync(x => x.Title == title);
+  public async Task<DataTask> GetByTitleAsync(Title title)
+    => await _dataTasks
+        .Include(x => x.Assignee)
+        .SingleOrDefaultAsync(x => x.Title == title);
 
   public async Task UpdateAsync(DataTask DataTask)
   {
