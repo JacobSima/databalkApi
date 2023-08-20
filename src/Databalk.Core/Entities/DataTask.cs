@@ -12,18 +12,22 @@ public class DataTask
 
   public Date DueDate {get; private set;}
 
-  public DataTask(DataTaskId id, Title title, Description description, Date dueDate)
+  public UserId Assignee {get; private set;}
+
+  public DataTask(DataTaskId id, Title title, Description description, Date dueDate, UserId assignee)
   {
     Id = id;
     Title = title;
     Description =  description;
     DueDate = dueDate;
+    Assignee = assignee;
   }
 
-  public void Update(string title, string description, DateTime dueDate)
+  public void Update(string title, string description, DateTime dueDate, Guid assignee)
   {
     Title = title;
     Description = description;
     DueDate = dueDate;
+    Assignee = assignee;
   }
 }

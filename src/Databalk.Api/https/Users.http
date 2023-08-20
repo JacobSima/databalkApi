@@ -2,21 +2,24 @@
 
 @base = users
 
-@userId = 1233b305-6425-4aa2-a0e5-b8d46d1d4253
+@userId1 = 0ddde007-895e-4509-85e1-6fb6c4d0c3af
+@userId2 = 9e2a2fc2-7409-4d6b-95db-bc2f40f3d06f
+@userId3 = c5e1e197-22e2-4b32-8f4d-66e800079f7e
+@userId4 = d0b3d63e-9f7e-4bc0-aa63-5ffef39f5aa4
 
 ### Query
 GET {{url}}/{{base}}
 
 ### Query 
-GET {{url}}/{{base}}/{{userId}}
+GET {{url}}/{{base}}/{{userId1}}
 
 ### Command
 POST {{url}}/{{base}}/sign-up
 Content-Type: application/json
 
 {
-  "email": "userokj4@myspot.io",
-  "username": "user4",
+  "email": "userokj5@databalk.io",
+  "username": "user5",
   "password": "secret"
 }
 
@@ -27,7 +30,7 @@ POST {{url}}/{{base}}/sing-in
 Content-Type: application/json
 
 {
-  "email": "userokj4@myspot.io",
+  "email": "userokj5@databalk.io",
   "password": "secret"
 }
 

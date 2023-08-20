@@ -25,5 +25,9 @@ public class DataTaskConfiguration : IEntityTypeConfiguration<DataTask>
     builder.Property(x => x.DueDate)
       .IsRequired()
       .HasConversion(x => x.Value, x => new Date(x));
+    
+    builder.Property(x => x.Assignee)
+      .IsRequired()
+      .HasConversion(x => x.Value, x => new UserId(x));
   }
 }

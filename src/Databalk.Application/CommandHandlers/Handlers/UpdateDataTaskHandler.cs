@@ -18,8 +18,8 @@ public class UpdateDataTaskHandler : ICommandHandler<UpdateDataTask>
   {
     var dataTask = await _repository.GetByIdAsync(command.Id) ?? throw new DataTaskNotFoundException(command.Id);
 
-    var(id, title, description, dueDate) = command;
-    dataTask.Update(title, description, dueDate);
+    var(id, title, description, dueDate, assignee) = command;
+    dataTask.Update(title, description, dueDate, assignee);
 
     await _repository.UpdateAsync(dataTask);
   }
