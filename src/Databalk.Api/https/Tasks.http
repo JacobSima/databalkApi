@@ -4,17 +4,21 @@
 
 @taskId = 79e077c3-08b4-4e7c-82a3-6b186b4bb9b8
 
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZjliNDAxMi03OGUxLTQzZGMtOTdmZC01YjM4MjIzN2NmOWEiLCJ1bmlxdWVfbmFtZSI6ImFmOWI0MDEyLTc4ZTEtNDNkYy05N2ZkLTViMzgyMjM3Y2Y5YSIsIm5iZiI6MTY5MjUzNTYzMywiZXhwIjoxNjkyNTM2MjMzLCJpc3MiOiJkYXRhQmFsay1pc3N1ZXIiLCJhdWQiOiJkYXRhQmFsay1hdWRpZW5jZSJ9.wA_lrkG1AwayaUTIDksA0HsWoCzYiy3NY5H_GhryxXg
 
 ### Query: get all tasks
 GET {{url}}/{{base}}
+Authorization: Bearer {{accessToken}}
 
 
 ### Query: get a single task
 GET {{url}}/{{base}}/{{taskId}}
+Authorization: Bearer {{accessToken}}
 
 
 ### Command: Create a single task
 POST  {{url}}/{{base}}
+Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
@@ -28,6 +32,7 @@ Content-Type: application/json
 
 ### Command: Update a single task
 PUT {{url}}/{{base}}
+Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
@@ -41,3 +46,4 @@ Content-Type: application/json
 
 ### Command: Delete Task
 DELETE {{url}}/{{base}}/{{taskId}}
+Authorization: Bearer {{accessToken}}

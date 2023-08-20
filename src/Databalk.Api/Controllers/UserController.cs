@@ -37,10 +37,12 @@ public class UserController : ControllerBase
     _tokenStorage = tokenStorage;
   }
 
+  [Authorize]
   [HttpGet]
   public async Task<ActionResult<IEnumerable<UserDto>>> Get([FromQuery] GetUsers query)
     => Ok(await _getUsersHandlers.HandleAsync(query));
   
+  [Authorize]
   [HttpGet("{userId:guid}")]
   public async Task<ActionResult<UserDto>> Get(Guid userId)
   {
@@ -75,8 +77,8 @@ public class UserController : ControllerBase
     return token;
   }
 
-  [HttpGet("secret")]
   [Authorize]
+  [HttpGet("secret")]
   public ActionResult<string> GetSecret()
   {
     var user = HttpContext.User;
