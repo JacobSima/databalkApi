@@ -3,7 +3,6 @@ using Databalk.Application;
 using Databalk.Infrastructure;
 using Databalk.Infrastructure.Middleware;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
@@ -15,12 +14,11 @@ builder.Services
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
+app.UseSwagger();
+app.UseSwaggerUI();
 app.MapControllers();
 app.UseAuthentication();
 app.UseAuthorization();
-
-// app.UseHttpsRedirection();
-
 
 
 app.Run();

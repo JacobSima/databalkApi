@@ -6,6 +6,7 @@ using Databalk.Application.Queries;
 using Databalk.Application.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Databalk.Api.Controllers;
 
@@ -39,11 +40,17 @@ public class UserController : ControllerBase
 
   [Authorize]
   [HttpGet]
+  [SwaggerOperation("Get list of all the users")]
+  [ProducesResponseType(StatusCodes.Status200OK)]
+  [ProducesResponseType(StatusCodes.Status401Unauthorized)]
   public async Task<ActionResult<IEnumerable<UserDto>>> Get([FromQuery] GetUsers query)
     => Ok(await _getUsersHandlers.HandleAsync(query));
   
   [Authorize]
   [HttpGet("{userId:guid}")]
+  [SwaggerOperation("Get User By Id")]
+  [ProducesResponseType(StatusCodes.Status200OK)]
+  [ProducesResponseType(StatusCodes.Status401Unauthorized)]
   public async Task<ActionResult<UserDto>> Get(Guid userId)
   {
     var user = await _getUserHandler.HandleAsync(new GetUser {UserId = userId});
@@ -51,6 +58,7 @@ public class UserController : ControllerBase
   }
 
   [HttpPost("sign-up")]
+  [SwaggerOperation("Create New User")]
   [ProducesResponseType(StatusCodes.Status201Created)]
   [ProducesResponseType(StatusCodes.Status400BadRequest)]
   public async Task<ActionResult> Post(SignUp command)
@@ -61,6 +69,9 @@ public class UserController : ControllerBase
   }
 
    [HttpPost("sing-in")]
+  [SwaggerOperation("Log In With User Details")]
+  [ProducesResponseType(StatusCodes.Status200OK)]
+  [ProducesResponseType(StatusCodes.Status400BadRequest)]
   public async Task<ActionResult<JwtDto>> Post(SignIn command)
   {
     await _signInHandler.HandleAsync(command);

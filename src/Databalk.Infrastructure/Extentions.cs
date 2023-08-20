@@ -6,6 +6,7 @@ using Databalk.Infrastructure.Security;
 using Databalk.Infrastructure.Middleware;
 using Databalk.Infrastructure.Auth;
 using Databalk.Core.Abstractions;
+using Microsoft.OpenApi.Models;
 
 namespace Databalk.Infrastructure;
 
@@ -26,6 +27,16 @@ public static class Extentions
     services.AddSecurity();
 
     services.AddAuth(configuration);
+
+    services.AddSwaggerGen(swagger =>
+    {
+      swagger.EnableAnnotations();
+      swagger.SwaggerDoc("v1", new OpenApiInfo
+      {
+        Title = "Assessment Overview: Building a User’s and Tasks API",
+        Version = "v1"
+      });
+    });
 
     var infrastructureAssembly = typeof(AppOptions).Assembly;
     services.Scan(s => s.FromAssemblies(infrastructureAssembly)
